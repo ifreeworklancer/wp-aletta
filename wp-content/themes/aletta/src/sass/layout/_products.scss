@@ -1,0 +1,354 @@
+#products {
+  background: $dark;
+
+  @media (min-width: map_get($grid-breakpoints, xl)) {
+    padding-top: 13%;
+  }
+
+  .decor-image {
+    @extend %img;
+    position: absolute;
+    right: 15%;
+    bottom: 10px;
+    width: 80px;
+    height: 170px;
+  }
+
+  .products {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    @media (min-width: map_get($grid-breakpoints, xl)) {
+      flex-direction: row;
+    }
+
+    &-item {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      transition: .5s;
+      margin-bottom: 30px;
+
+      @media (min-width: map_get($grid-breakpoints, xl)) {
+        flex-direction: row;
+        margin-right: 4px;
+        width: 5%;
+        margin-bottom: 0;
+      }
+
+      &.active {
+
+        @media (min-width: map_get($grid-breakpoints, xl)) {
+          width: 90%;
+        }
+
+
+        .products-item-nav {
+
+          .counter {
+            color: #fff;
+
+            &::before {
+              width: 120px;
+            }
+          }
+
+          &::before {
+            width: 45vw;
+          }
+        }
+
+        .products-item-body {
+          opacity: 1;
+          transform: translateX(0);
+          transition: transform .6s 0s, opacity .4s 0s, width 0s 0s;
+
+          @media (min-width: map_get($grid-breakpoints, xl)) {
+            width: 90%;
+          }
+        }
+      }
+
+      &-nav {
+        position: relative;
+        flex: 1 0 auto;
+        background: #17181D;
+        padding: 15px 25px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 5;
+        cursor: pointer;
+        margin-bottom: 20px;
+
+        @media (min-width: map_get($grid-breakpoints, sm)) {
+          margin-bottom: 40px;
+        }
+
+        @media (min-width: map_get($grid-breakpoints, xl)) {
+          flex-direction: column;
+          padding: 0 0 30px;
+          margin-bottom: 0;
+        }
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          width: 0;
+          background: #17181D;
+          border-radius: 0 50% 0 0;
+          transition: .5s;
+          z-index: -2;
+          display: none;
+
+          @media (min-width: map_get($grid-breakpoints, lg)) {
+            display: block;
+          }
+        }
+
+        .counter {
+          position: relative;
+          color: $primary;
+          font-size: .875rem;
+          font-weight: bold;
+          transition: .5s;
+
+          &::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: -135px;
+            width: 0;
+            height: 1px;
+            background: #fff;
+            transition: .5s;
+            display: none;
+
+            @media (min-width: map_get($grid-breakpoints, lg)) {
+              display: block;
+            }
+          }
+        }
+
+        .title {
+          position: relative;
+          color: #fff;
+          font-weight: bold;
+
+          @media (min-width: map_get($grid-breakpoints, xl)) {
+            width: 20px;
+          }
+
+          span {
+
+            @media (min-width: map_get($grid-breakpoints, xl)) {
+              position: absolute;
+              transform-origin: left top;
+              bottom: -100px;
+              transform: rotate(-90deg);
+              white-space: nowrap;
+            }
+          }
+        }
+      }
+
+      &-body {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        opacity: 1;
+        transform: translateX(0);
+        transition: transform .6s 0s, opacity .4s 0s, width 0s 0s;
+        padding: 0 15px;
+
+        @media (min-width: map_get($grid-breakpoints, sm)) {
+          padding: 40px 15px;
+        }
+
+        @media (min-width: map_get($grid-breakpoints, lg)) {
+          flex-direction: row;
+        }
+
+        @media (min-width: map_get($grid-breakpoints, xl)) {
+          width: 0;
+          opacity: 0;
+          transform: translateX(100%);
+          transition: transform 0s 0s, opacity 0s 0s, width 0s 0s;
+          padding: 0;
+        }
+
+        .products-gallery {
+          width: 100%;
+          margin-bottom: 30px;
+
+          @media (min-width: map_get($grid-breakpoints, sm)) {
+            width: 80%;
+            margin: 0 auto 30px;
+          }
+
+          @media (min-width: map_get($grid-breakpoints, lg)) {
+            width: 50%;
+            margin-bottom: 0;
+          }
+        }
+
+        .products-description {
+
+          @media (min-width: map_get($grid-breakpoints, lg)) {
+            width: 50%;
+          }
+
+          .title {
+            color: #fff;
+          }
+
+          .description {
+            color: #e0e0e0;
+            margin-bottom: 25px;
+          }
+
+          .feature {
+            margin-bottom: 25px;
+
+            &-title {
+              color: $primary;
+              font-size: .625rem;
+              font-weight: bold;
+              text-transform: uppercase;
+              margin-bottom: 15px;
+            }
+
+            &-list {
+              @extend %mainList;
+            }
+          }
+
+          .price {
+            margin-right: 20px;
+            margin-bottom: 25px;
+
+            &-text {
+              font-size: .875rem;
+              color: #999;
+            }
+
+            &-value {
+              margin-left: 10px;
+              color: #fff;
+              font-size: 1.5rem;
+              font-weight: bold;
+            }
+
+            &-currency {
+              color: #fff;
+              font-weight: bold;
+              margin-left: -3px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.products-gallery {
+  margin-bottom: 30px;
+
+  .custom-tabs {
+    max-height: 400px;
+
+    &-body {
+      width: 50%;
+      padding-bottom: 100%;
+      margin-left: 25px;
+
+      @media (min-width: map_get($grid-breakpoints, sm)) {
+        padding-bottom: 60%;
+      }
+
+      @media (min-width: map_get($grid-breakpoints, lg)) {
+        padding-bottom: 100%;
+      }
+
+      &-item {
+        figure {
+          @extend %pos;
+          @extend %img;
+          background-size: contain;
+        }
+      }
+    }
+
+    &-nav {
+
+      &-item {
+        width: 100px;
+        height: 80px;
+        margin-bottom: 40px;
+
+        @media (min-width: map_get($grid-breakpoints, sm)) {
+          width: 170px;
+          height: 130px;
+          margin-bottom: 25px;
+        }
+
+        figure {
+          @extend %pos;
+          @extend %img;
+          background-size: contain;
+        }
+      }
+    }
+  }
+}
+
+.products-description {
+
+  .title {
+    color: #fff;
+  }
+
+  .description {
+    color: #e0e0e0;
+    margin-bottom: 25px;
+  }
+
+  .feature {
+    margin-bottom: 25px;
+
+    &-title {
+      color: $primary;
+      font-size: .625rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
+
+    &-list {
+      @extend %mainList;
+    }
+  }
+
+  .price {
+
+    &-text {
+      color: #999;
+    }
+
+    &-value {
+      color: #fff;
+    }
+
+    &-currency {
+      color: #fff;
+    }
+  }
+}

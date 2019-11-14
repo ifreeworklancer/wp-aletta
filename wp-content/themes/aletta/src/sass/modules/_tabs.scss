@@ -1,0 +1,37 @@
+.custom-tabs {
+  display: flex;
+  align-items: center;
+
+  &-body {
+    position: relative;
+
+    &-item {
+      @extend %pos;
+      opacity: 0;
+      transition: .5s;
+
+      &.active {
+        opacity: 1;
+      }
+    }
+  }
+
+  &-nav {
+    position: relative;
+
+    &-item {
+      position: relative;
+      opacity: .3;
+      transition: .5s;
+      cursor: pointer;
+
+      &:hover {
+        opacity: .7;
+      }
+
+      &.active {
+        opacity: 1;
+      }
+    }
+  }
+}

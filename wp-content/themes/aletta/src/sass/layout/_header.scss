@@ -1,0 +1,245 @@
+#app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 200;
+  border-bottom: 1px solid rgba(#fff, .5);
+  padding: 10px 20px;
+  background: $primary_light;
+
+  @media (min-width: map_get($grid-breakpoints, xl)) {
+    padding: 0;
+    background: transparent;
+  }
+
+  .logo {
+    position: relative;
+    font-size: 30px;
+    font-weight: bold;
+    color: $primary_dark;
+    z-index: 210;
+  }
+
+  .header-nav {
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    z-index: 210;
+
+    @media (min-width: map_get($grid-breakpoints, xl)) {
+      height: 65px;
+    }
+
+    &-list {
+      position: relative;
+      right: -100%;
+      transition: .7s;
+
+      &.active {
+        right: 0;
+      }
+
+      ul {
+        position: relative;
+        display: flex;
+
+        li {
+          margin-right: 30px;
+
+          a {
+            position: relative;
+            font-size: .75rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            color: $secondary;
+            transition: .4s;
+
+            &::before {
+              content: '';
+              position: absolute;
+              left: 0;
+              bottom: -24px;
+              width: 0;
+              height: 3px;
+              background: $secondary;
+              transition: .4s;
+            }
+
+            &:hover {
+
+              &::before {
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .btn {
+      position: relative;
+      margin-right: 30px;
+      color: $primary_light;
+      transition: .4s;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: -15px;
+        transform: translateY(-50%);
+        width: 2px;
+        height: 30px;
+        background: $secondary;
+        transition: .4s;
+      }
+
+    }
+  }
+
+  .burger-menu {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 20px;
+    height: 5px;
+    cursor: pointer;
+
+    .line {
+      width: 20px;
+      height: 1px;
+      background: $secondary;
+      transition: .4s;
+    }
+
+    &.active {
+
+      .line {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+
+        &--top {
+          transform: translate(-50%, -50%) rotate(-45deg);
+        }
+
+        &--bottom {
+          transform: translate(-50%, -50%) rotate(45deg);
+        }
+      }
+    }
+  }
+
+  .wpm-language-switcher {
+    margin-left: 30px;
+    display: flex;
+
+    li {
+      margin-right: 8px;
+
+      span, a {
+        padding: 4px;
+        color: $secondary;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: .75rem;
+        border-radius: 3px;
+        line-height: 1;
+        transition: .5s;
+      }
+
+      &.active {
+
+        span {
+          color: $primary_light;
+          background: $secondary;
+        }
+      }
+
+      &:hover {
+
+        span {
+          color: $primary_light;
+        }
+
+        a {
+          color: $primary_light;
+          background: $secondary;
+        }
+      }
+    }
+  }
+
+  &.white {
+
+    .header-nav {
+
+      &-list {
+        ul {
+          li {
+            a {
+              color: #fff;
+
+              &::before {
+                background: #fff;
+              }
+            }
+          }
+        }
+      }
+
+      .btn {
+        background: #fff;
+        border-color: #fff;
+        color: $secondary;
+
+        &::before {
+          background: #fff;
+        }
+
+        &:hover {
+          background: #E7E7E7;
+        }
+      }
+
+      .burger-menu {
+
+        .line {
+          background: #fff;
+        }
+      }
+
+      .wpm-language-switcher {
+
+        li {
+
+          span, a {
+            color: #fff;
+          }
+
+          &.active {
+
+            span {
+              color: $secondary;
+              background: #fff;
+            }
+          }
+
+          &:hover {
+            span {
+              color: $secondary;
+            }
+
+            a {
+              color: $secondary;
+              background: #fff;
+            }
+          }
+        }
+      }
+    }
+  }
+}

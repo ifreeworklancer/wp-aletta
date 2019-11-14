@@ -1,0 +1,164 @@
+.custom-modal-wrapper {
+  @extend %pos;
+  position: fixed;
+  display: flex;
+  overflow-y: auto;
+  max-height: 100%;
+  z-index: 500;
+  transition: .5s;
+  opacity: 0;
+  pointer-events: none;
+  padding: 20px 0;
+  transform: translateY(-100%);
+
+  .custom-modal {
+    position: relative;
+    width: 95%;
+    max-width: 400px;
+    padding: 30px 25px;
+    margin: auto;
+    border-radius: 15px;
+    background: $primary_light;
+    z-index: 10;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 25%;
+      background: #EBD7A7;
+      z-index: -2;
+      display: none;
+
+      @media (min-width: map_get($grid-breakpoints, sm)) {
+        display: block;
+      }
+    }
+
+    @media (min-width: map_get($grid-breakpoints, sm)) {
+      padding: 40px 50px;
+    }
+
+    &-view {
+
+
+      .product-selected {
+        position: relative;
+        width: 90%;
+        height: 100%;
+
+        &-item {
+          @extend %pos;
+          transform: translateX(-200%);
+          transition: .7s ease-in-out;
+          text-align: center;
+
+          .image {
+            margin-bottom: 20px;
+            max-width: 100%;
+            max-height: 280px;
+          }
+
+          &.active {
+            transform: translateX(0);
+          }
+        }
+      }
+    }
+
+    &-body {
+
+      .title {
+        margin-bottom: 25px;
+      }
+    }
+  }
+
+  &--feedback {
+
+    .custom-modal {
+      max-width: 760px;
+      display: flex;
+    }
+
+    .custom-modal-view {
+      width: 50%;
+      display: none;
+
+      @media (min-width: map_get($grid-breakpoints, sm)) {
+        display: block;
+      }
+    }
+
+    .custom-modal-body {
+
+      @media (min-width: map_get($grid-breakpoints, sm)) {
+        width: 50%;
+      }
+
+      .title {
+        margin-bottom: 40px;
+      }
+    }
+  }
+
+
+  &.active {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+  }
+
+  .close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+
+    &:hover {
+
+      .line {
+        opacity: 1;
+      }
+    }
+
+    .line {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 15px;
+      height: 1px;
+      background: $secondary;
+      opacity: .7;
+
+      &--left {
+        transform: translate(-50%, -50%) rotate(-45deg);
+      }
+
+      &--right {
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
+    }
+  }
+}
+
+
+.modal-mask {
+  @extend %pos;
+  position: fixed;
+  background: rgba($dark, .8);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 5;
+  transition: .5s;
+
+  &.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+}

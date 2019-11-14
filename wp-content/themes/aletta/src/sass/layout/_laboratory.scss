@@ -1,0 +1,75 @@
+#laboratory {
+  background: #fff;
+  padding: 50px 0;
+
+  @media (min-width: map_get($grid-breakpoints, sm)) {
+    padding: 100px 0;
+  }
+
+  @media (min-width: map_get($grid-breakpoints, xl)) {
+    padding: 0;
+  }
+
+  .decor-image {
+    @extend %img;
+    position: absolute;
+    left: 50%;
+    bottom: 5%;
+    width: 170px;
+    height: 80px;
+    z-index: 10;
+  }
+
+  .laboratory-item {
+    position: relative;
+    z-index: 15;
+  }
+
+  .laboratory-image {
+    position: absolute;
+    top: 90px;
+    right: 0;
+    bottom: 0;
+    width: 55%;
+    z-index: 5;
+
+    @media (min-width: map_get($grid-breakpoints, xl)) {
+      width: 50%;
+    }
+
+    figure {
+      @extend %img;
+      width: 100%;
+      position: absolute;
+      right: -10%;
+      bottom: -20%;
+      padding-bottom: 100%;
+      border-radius: 50%;
+    }
+
+    &.start-animation {
+
+      .laboratory-image-decor {
+        animation: move 2s 1 ease-in-out;
+      }
+    }
+
+    .laboratory-image-decor {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      right: 20px;
+      bottom: 20px;
+      @extend %img;
+    }
+  }
+}
+
+@keyframes move {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}

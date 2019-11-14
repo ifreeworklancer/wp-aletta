@@ -1,0 +1,8 @@
+{
+  "post_types": {
+    "product": {}
+  },
+  "taxonomies": {
+    "product_category" : {}
+  }
+}

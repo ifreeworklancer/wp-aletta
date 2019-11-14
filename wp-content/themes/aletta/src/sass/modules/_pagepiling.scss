@@ -1,0 +1,96 @@
+body {
+
+  &.first-dark {
+    #pp-nav {
+      background: $dark;
+    }
+  }
+
+  #pp-nav {
+    top: 0;
+    bottom: 0;
+    left: 0 !important;
+    margin-top: 0 !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    background: $primary;
+    transition: .4s;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -45px;
+      width: 50px;
+      height: 45px;
+      background: $primary;
+      transition: 0s;
+    }
+
+    ul {
+      width: 100%;
+      counter-reset: section;
+
+      li {
+        position: relative;
+        width: 100%;
+        height: 25px;
+        margin: 0 !important;
+        counter-increment: section;
+
+        a {
+          display: block;
+          width: 100%;
+          height: 25px;
+          transition: .5s;
+
+          &::before {
+            content: "0" counter(section);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: $primary_dark;
+            font-weight: bold;
+            font-family: $font-family-base;
+            transition: .5s;
+          }
+
+          &.active {
+            background: $secondary;
+
+            &::before {
+              color: $primary;
+            }
+          }
+
+          span {
+            display: none;
+          }
+        }
+      }
+    }
+
+    &.primary {
+      background: $primary;
+    }
+
+    &.dark {
+      background: $dark;
+    }
+
+    &.white {
+      background: #fff;
+    }
+
+    &.last {
+
+      &::before {
+        bottom: 0;
+        transition: .2s;
+      }
+    }
+  }
+}

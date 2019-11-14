@@ -1,0 +1,61 @@
+#page-about-description {
+  @extend %img;
+  padding: 150px 0 100px;
+
+  @media (min-width: map_get($grid-breakpoints, xl)) {
+    padding: 0;
+  }
+
+  .page-about-item {
+    position: relative;
+    background: #fff;
+    padding: 20px 15px 30px;
+    border-bottom: 10px solid $primary;
+    z-index: 6;
+
+    @media (min-width: map_get($grid-breakpoints, sm)) {
+      padding: 30px 40px 50px;
+    }
+  }
+
+  .decor-title {
+    position: absolute;
+    top: 10%;
+    left: 0;
+    line-height: 1;
+    color: $primary;
+    font-size: 5.75rem;
+    opacity: .5;
+
+    @media (min-width: map_get($grid-breakpoints, sm)) {
+      font-size: 6.75rem;
+      top: 9%;
+    }
+
+    @media (min-width: map_get($grid-breakpoints, xl)) {
+      left: 50px;
+      font-size: 8.75rem;
+    }
+  }
+}
+
+#page-about-overview {
+  background: #17181D;
+  color: #fff;
+  
+  .page-about-overview-item {
+
+    .title {
+      color: #fff;
+    }
+  }
+
+  .decor-image {
+    @extend %img;
+    position: absolute;
+    right: 0;
+    bottom: 50px;
+    width: 170px;
+    height: 80px;
+  }
+}

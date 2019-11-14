@@ -1,0 +1,122 @@
+#page-laboratory {
+  padding: 150px 0 50px;
+
+  @media (min-width: map_get($grid-breakpoints, lg)) {
+    padding: 150px 0 100px;
+  }
+
+  @media (min-width: map_get($grid-breakpoints, xl)) {
+    padding: 0;
+  }
+
+  .page-description {
+    position: relative;
+    z-index: 20;
+    margin-bottom: 30px;
+
+    @media (min-width: map_get($grid-breakpoints, sm)) {
+      margin-bottom: 0;
+    }
+  }
+
+  .decor-image {
+    @extend %img;
+    position: absolute;
+    left: 60px;
+    bottom: 10%;
+    width: 170px;
+    height: 80px;
+    z-index: 2;
+  }
+
+  .decor-title {
+    position: absolute;
+    top: 10%;
+    left: 0;
+    line-height: 1;
+    color: $primary;
+    font-size: 5.75rem;
+    z-index: 15;
+
+    @media (min-width: map_get($grid-breakpoints, sm)) {
+      font-size: 6.75rem;
+      top: 15%;
+    }
+
+    @media (min-width: map_get($grid-breakpoints, xl)) {
+      left: 50px;
+      font-size: 8.75rem;
+    }
+  }
+
+  .page-laboratory-view {
+    position: relative;
+    width: 100%;
+    height: 350px;
+
+    @media (min-width: map_get($grid-breakpoints, sm)) {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 50%;
+      height: auto;
+      z-index: 5;
+    }
+
+    .slider-navigation {
+      position: absolute;
+      left: 15px;
+      right: 15px;
+      bottom: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+
+      @media (min-width: map_get($grid-breakpoints, lg)) {
+        left: 40px;
+        right: 50px;
+        bottom: 40px;
+      }
+    }
+
+    .slider-arrow {
+      z-index: 10;
+
+      &-item {
+        margin-right: 5px;
+
+        svg {
+          fill: #fff;
+        }
+
+        &:hover {
+          svg {
+            fill: $primary;
+          }
+        }
+      }
+    }
+
+    .slider-nav {
+      z-index: 10;
+    }
+
+    .page-laboratory-slider {
+      height: 100%;
+      z-index: 5;
+
+      &-item {
+        width: 100%;
+        height: 100%;
+        @extend %img;
+
+        &::before {
+          content: '';
+          @extend %pos;
+          background: linear-gradient(0, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+        }
+      }
+    }
+  }
+}

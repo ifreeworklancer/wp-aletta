@@ -1,0 +1,172 @@
+#reviews {
+  background: $primary_light;
+  padding: 50px 0 0;
+
+  @media (min-width: map_get($grid-breakpoints, sm)) {
+    padding: 100px 0 0;
+  }
+
+  @media (min-width: map_get($grid-breakpoints, lg)) {
+    padding: 100px 0;
+  }
+
+  @media (min-width: map_get($grid-breakpoints, xl)) {
+    padding: 0;
+  }
+
+  .section-description {
+    margin-bottom: 40px;
+  }
+
+  .decor-image {
+    @extend %img;
+    position: absolute;
+    right: 20px;
+    bottom: 10%;
+    width: 170px;
+    height: 80px;
+    z-index: 2;
+  }
+
+  .reviews {
+    position: relative;
+    z-index: 5;
+    margin-top: 100px;
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @media (min-width: map_get($grid-breakpoints, lg)) {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 50%;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    .decor-title {
+      position: absolute;
+      top: -70px;
+      right: 0;
+      font-size: 2.125rem;
+      color: $primary;
+      text-transform: uppercase;
+      z-index: 2;
+
+      @media (min-width: map_get($grid-breakpoints, sm)) {
+        font-size: 3.75rem;
+      }
+
+      @media (min-width: map_get($grid-breakpoints, lg)) {
+        top: 15%;
+      }
+    }
+
+    .slider-arrow {
+      width: 85%;
+      margin-top: 20px;
+
+      @media (min-width: map_get($grid-breakpoints, sm)) {
+        width: 60%;
+      }
+
+      @media (min-width: map_get($grid-breakpoints, lg)) {
+        width: 80%;
+      }
+
+      @media (min-width: map_get($grid-breakpoints, xl)) {
+        width: 70%;
+      }
+
+      &-item {
+        margin-right: 5px;
+      }
+    }
+
+    &-slider {
+      width: 100%;
+      z-index: 10;
+
+      &-item {
+        width: 100%;
+
+        .reviews-item {
+          position: relative;
+          margin: 0 auto;
+          width: 85%;
+          background: #fff;
+          border: 1px solid $secondary;
+          border-radius: 5px;
+
+          @media (min-width: map_get($grid-breakpoints, sm)) {
+            width: 60%;
+          }
+
+          @media (min-width: map_get($grid-breakpoints, lg)) {
+            width: 80%;
+          }
+
+          @media (min-width: map_get($grid-breakpoints, xl)) {
+            width: 70%;
+          }
+
+          &-body {
+
+            .video-overview {
+              border: 1px solid #fff;
+              border-radius: 5px 5px 0 0;
+            }
+          }
+
+          &-footer {
+            background: $secondary;
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 20px;
+
+            .name {
+              display: flex;
+              align-items: center;
+              color: #fff;
+
+              .image {
+                margin-right: 15px;
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                border: 2px solid #F3DDA9;
+
+                figure {
+                  @extend %img;
+                  border-radius: 50%;
+                  width: 100%;
+                  height: 100%;
+                }
+              }
+            }
+
+            .stars {
+              display: flex;
+
+              .icon {
+                margin-right: 5px;
+
+                &:last-of-type {
+                  margin-right: 0;
+                }
+
+                svg {
+                  fill: #FFD159;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

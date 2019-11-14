@@ -1,0 +1,34 @@
+.menu {
+  @extend %pos;
+  position: fixed;
+  transform: translateY(-100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: $primary_light;
+  z-index: 200;
+  transition: .5s;
+
+  @media (min-width: map_get($grid-breakpoints, xl)) {
+    display: none;
+  }
+
+  &.active {
+    transform: translateY(0);
+  }
+
+  &-list {
+
+    li {
+      margin-bottom: 15px;
+      text-align: center;
+
+      a {
+        text-transform: uppercase;
+        font-weight: bold;
+        color: $secondary;
+      }
+    }
+  }
+}

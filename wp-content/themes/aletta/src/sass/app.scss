@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Sans:400,700&display=swap&subset=cyrillic');
+
+@import "config/variables";
+@import "config/placeholders";
+
+@import "~bootstrap/scss/bootstrap", "~flickity/dist/flickity.min.css", "~pagepiling.js/dist/jquery.pagepiling.min.css";
+
+@import "base/body";
+@import "base/btn";
+@import "base/layout";
+@import "base/page";
+
+@import "modules/menu";
+@import "modules/forms";
+@import "modules/modal";
+@import "modules/slider";
+@import "modules/pagepiling";
+@import "modules/tabs";
+@import "modules/dropdown";
+@import "modules/video";
+
+@import "layout/header";
+@import "layout/intro";
+@import "layout/laboratory";
+@import "layout/products";
+@import "layout/reviews";
+@import "layout/footer";
+
+@import "single/single-product";
+
+@import "page/page-laboratory";
+@import "page/page-contacts";
+@import "page/page-about";
