@@ -30,7 +30,7 @@ $laboratory = get_field('laboratory', $pageID);
                         <?php endforeach; ?>
                     </div>
                     <div>
-                        <a href="#" class="btn btn-outline-secondary">
+                        <a href="<?= get_permalink(77);?>" class="btn btn-outline-secondary">
                             <?= __('[:ru]Больше информации[:uk]Більше інформації[:]'); ?>
                         </a>
                     </div>

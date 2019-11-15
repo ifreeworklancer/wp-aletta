@@ -60,10 +60,16 @@ function theme_customize_register($wp_customize)
         'title' => 'Контактная информация',
         'priority' => 30,
     ]);
-    $wp_customize->add_setting('phone');
-    $wp_customize->add_control('phone', [
+    $wp_customize->add_setting('phone1');
+    $wp_customize->add_control('phone1', [
         'section' => 'contacts',
-        'label' => 'Телефон',
+        'label' => 'Первый телефон',
+        'type' => 'text',
+    ]);
+    $wp_customize->add_setting('phone2');
+    $wp_customize->add_control('phone2', [
+        'section' => 'contacts',
+        'label' => 'Второй телефон',
         'type' => 'text',
     ]);
     $wp_customize->add_setting('email');

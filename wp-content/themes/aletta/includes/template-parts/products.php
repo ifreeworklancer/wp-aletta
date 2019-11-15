@@ -1,10 +1,8 @@
 <?php
 $args = array(
     'posts_per_page' => -1,
-    'order' => 'asc',
     'post_type' => 'product'
 );
-
 $products = new WP_Query($args);
 ?>
     <!-- Products -->

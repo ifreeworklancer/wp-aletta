@@ -25,33 +25,17 @@
             <div class="col-auto">
                 <nav class="header-nav">
                     <div class="header-nav-list d-none d-xl-flex">
-                        <ul>
-                            <li>
-                                <a href="/">
-                                    Главная
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../../page/page-laboratory.php">
-                                    лаборатория
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../../page/page-catalog.php">
-                                    продукты
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../../page/page-about.php">
-                                    о нас
-                                </a>
-                            </li>
-                            <li>
-                                <a href="../../page/page-contacts.php">
-                                    контакты
-                                </a>
-                            </li>
-                        </ul>
+                        <?php wp_nav_menu([
+                            'theme_location' => 'main_menu',
+                            'menu' => '',
+                            'container' => '',
+                            'container_class' => '',
+                            'container_id' => '',
+                            'menu_class' => '',
+                            'menu_id' => '',
+                            'echo' => true,
+                            'items_wrap' => '<ul class="%2$s">%3$s</ul>',
+                        ]); ?>
                     </div>
                     <a href="#" class="btn btn-secondary d-none d-xl-inline-flex open-feedback">
                         <?= __('[:ru]связаться, чтобы заказать[:uk]зв\'язатися, щоб замовити[:]'); ?>
@@ -69,33 +53,19 @@
         </div>
     </div>
     <div class="menu">
-        <ul class="menu-list">
-            <li>
-                <a href="/">
-                    Главная
-                </a>
-            </li>
-            <li>
-                <a href="../../page/page-laboratory.php">
-                    лаборатория
-                </a>
-            </li>
-            <li>
-                <a href="../../page/page-products.php">
-                    продукты
-                </a>
-            </li>
-            <li>
-                <a href="../../page/page-about.php">
-                    о нас
-                </a>
-            </li>
-            <li>
-                <a href="../../page/page-contacts.php">
-                    контакты
-                </a>
-            </li>
-        </ul>
+        <div class="menu-list">
+            <?php wp_nav_menu([
+                'theme_location' => 'main_menu',
+                'menu' => '',
+                'container' => '',
+                'container_class' => '',
+                'container_id' => '',
+                'menu_class' => 'menu-list',
+                'menu_id' => '',
+                'echo' => true,
+                'items_wrap' => '<ul class="%2$s">%3$s</ul>',
+            ]); ?>
+        </div>
         <div class="mt-4">
             <a href="#" class="btn btn-secondary open-feedback">
                 <?= __('[:ru]связаться, чтобы заказать[:uk]зв\'язатися, щоб замовити[:]'); ?>

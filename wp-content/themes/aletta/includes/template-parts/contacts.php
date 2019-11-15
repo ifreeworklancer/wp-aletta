@@ -1,11 +1,17 @@
+<?php
+$pageID = 107;
+$page_contacts_description = get_field('page_contacts_description', $pageID);
+$page_contacts_map = get_field('page_contacts_map', $pageID);
+?>
 <!-- Page Laboratory -->
 <section id="page-contacts" data-class-header="dark" data-class-nav="primary last" class="section-footer">
     <div class="map-contacts">
         <div class="map-mask">
-            Нажмите для использования карты
+            <?= __('[:ru]Нажмите для использования карты[:uk]Натисніть для використання карти[:]'); ?>
         </div>
-        <div id="contacts-map" data-lon="<?= $mapLon; ?>" data-lat="<?= $mapLat; ?>"
-             data-icon="<?= $mapIcon; ?>">
+        <div id="contacts-map" data-lon="<?= $page_contacts_map['page_contacts_map_lon']; ?>"
+             data-lat="<?= $page_contacts_map['page_contacts_map_lat']; ?>"
+             data-icon="<?= $page_contacts_map['page_contacts_map_icon']['url']; ?>">
         </div>
     </div>
     <div class="container h-100">
@@ -13,11 +19,11 @@
             <div class="col-sm-9 col-md-7 col-lg-5 mb-5 mb-lg-0">
                 <div class="section-description">
                     <h2 class="title">
-                        <?= $page_contacts['title']; ?>
+                        <?= get_the_title(); ?>
                     </h2>
                     <div class="description">
                         <p>
-                            <?= $page_contacts['description']; ?>
+                            <?= $page_contacts_description; ?>
                         </p>
                     </div>
                 </div>
@@ -27,16 +33,16 @@
                             <svg width="18" height="18">
                                 <use xlink:href="#phone-icon"></use>
                             </svg>
-                            <a href="tel:+<?= phone_link($phone1); ?>">
-                                <?= $phone1; ?>
+                            <a href="tel:<?= phone_link(get_theme_mod('phone1')); ?>">
+                                <?= get_theme_mod('phone1'); ?>
                             </a>
                         </li>
                         <li>
                             <svg width="18" height="18">
                                 <use xlink:href="#phone-icon"></use>
                             </svg>
-                            <a href="tel:+<?= phone_link($phone2); ?>">
-                                <?= $phone2; ?>
+                            <a href="tel:<?= phone_link(get_theme_mod('phone2')); ?>">
+                                <?= get_theme_mod('phone2'); ?>
                             </a>
                         </li>
                     </ul>
@@ -45,32 +51,32 @@
                             <svg width="18" height="12">
                                 <use xlink:href="#email-icon"></use>
                             </svg>
-                            <a href="mailto:+<?= $email; ?>">
-                                <?= $email; ?>
+                            <a href="mailto:+<?= get_theme_mod('email'); ?>">
+                                <?= get_theme_mod('email'); ?>
                             </a>
                         </li>
                     </ul>
                     <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center mb-4">
                         <div>
-                            Или заполните форму
+                            <?= __('[:ru]Или заполните форму[:uk]Або заповніть форму[:]'); ?>
                         </div>
                         <a href="#" class="btn btn-outline-secondary open-advice mt-3 mt-sm-0">
-                            консультация менеджера
+                            <?= __('[:ru]консультация менеджера[:uk]консультація менеджера[:]'); ?>
                         </a>
                     </div>
                     <ul class="social-list">
                         <li>
-                            Найдите нас в соцсетях
+                            <?= __('[:ru]Найдите нас в соцсетях[:uk]Знайдіть нас у соцмережах[:]'); ?>
                         </li>
                         <li>
-                            <a href="<?= $facebook; ?>">
+                            <a href="<?= get_theme_mod('facebook'); ?>">
                                 <svg width="18" height="18">
                                     <use xlink:href="#facebook-icon"></use>
                                 </svg>
                             </a>
                         </li>
                         <li>
-                            <a href="<?= $instagram; ?>">
+                            <a href="<?= get_theme_mod('instagram'); ?>">
                                 <svg width="18" height="18">
                                     <use xlink:href="#instagram-icon"></use>
                                 </svg>
@@ -81,11 +87,12 @@
             </div>
         </div>
     </div>
-    <figure class="decor-image d-none d-md-block" style="background-image: url('../../images/icon/decor-image-light.png');"></figure>
+    <figure class="decor-image d-none d-md-block"
+            style="background-image: url(<?= get_theme_file_uri('images/icon/decor-image-light.png'); ?>);"></figure>
     <footer id="app-footer">
         <div class="footer-item text-center text-lg-left">
             <?= date('Y'); ?>
-            Все права защищены
+            <?= __('[:ru]Все права защищены[:uk]Всі права захищені[:]'); ?>
         </div>
         <div class="footer-item">
             <ul class="footer-list">
@@ -107,7 +114,8 @@
             </ul>
         </div>
         <div class="footer-item text-center text-lg-right">
-            Вебразработка сайта студией Impression Bureau 2019
+            <?= __('[:ru]Вебразработка сайта студией[:uk]Вебразработка сайту студією[:]'); ?> <a
+                    href="https://impressionbureau.pro/" target="_blank">Impression Bureau</a> 2019
         </div>
     </footer>
 </section>

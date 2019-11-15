@@ -19,7 +19,7 @@ $intro = get_field('intro', $pageID);
                         </div>
                     </div>
                     <div>
-                        <a href="#" class="btn btn-outline-secondary">
+                        <a href="<?= get_permalink(91); ?>" class="btn btn-outline-secondary">
                             <?= __('[:ru]Узнать больше[:uk]Дізнатися більше[:]'); ?>
                         </a>
                     </div>

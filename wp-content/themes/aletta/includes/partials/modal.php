@@ -3,7 +3,6 @@ $pageID = 56;
 $feedback = get_field('feedback', $pageID);
 $args = array(
     'posts_per_page' => -1,
-    'order' => 'asc',
     'post_type' => 'product'
 );
 

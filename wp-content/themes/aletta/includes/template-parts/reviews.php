@@ -5,7 +5,6 @@ $reviews = get_field('reviews', $pageID);
 
 $args = array(
     'posts_per_page' => -1,
-    'order' => 'asc',
     'post_type' => 'product'
 );
 
