@@ -118,7 +118,7 @@ let mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
         let creamID = $(this).data('cream-id');
         $('.custom-dropdown-input').addClass('is-selected');
         $('.custom-dropdown-input__title').text(creamName);
-        $('input[name*="cream"]').val(creamName);
+        $('input[name*="product"]').val(creamName);
         $('.product-selected-item').removeClass('active').eq($(this).index());
         $('.product-selected-item[data-product-selected-id='+creamID+']').addClass('active');
     });
@@ -127,7 +127,7 @@ let mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
         let creamName = $(this).data('cream');
         $('.custom-dropdown-input').addClass('is-selected');
         $('.custom-dropdown-input__title').text(creamName);
-        $('input[name*="cream"]').val(creamName);
+        $('input[name*="product"]').val(creamName);
         $('.product-selected-item').removeClass('active').eq($(this).index()).addClass('active');
     });
 

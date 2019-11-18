@@ -26,7 +26,7 @@ $products = new WP_Query($args);
                         </p>
                     </div>
                 </div>
-                <form>
+                <form method="post" action="<?= get_theme_file_uri('mail-send.php'); ?>">
                     <div class="form-column">
                         <div class="custom-dropdown">
                             <div class="custom-dropdown-input">
@@ -51,7 +51,7 @@ $products = new WP_Query($args);
                                         <?php endwhile; endif; ?>
                                     <?php wp_reset_postdata(); ?>
                                 </ul>
-                                <input type="hidden" name="cream" value="<?= $first_product[0]->post_title; ?>">
+                                <input type="hidden" name="product" value="<?= $first_product[0]->post_title; ?>">
                             </div>
                         </div>
                         <div class="form-group">
@@ -59,21 +59,21 @@ $products = new WP_Query($args);
                                 <?= __('[:ru]Имя[:uk]Ім\'я[:]'); ?>
                             </label>
                             <input type="text" name="name" id="user-name--<?= $user_name_feedback; ?>"
-                                   class="form-control">
+                                   class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="user-phone--<?= $user_phone_feedback = generateRandomString(); ?>">
                                 <?= __('[:ru]Номер телефона[:uk]Номер телефону[:]'); ?>
                             </label>
                             <input type="tel" name="phone" id="user-phone--<?= $user_phone_feedback; ?>"
-                                   class="form-control">
+                                   class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="user-email--<?= $user_email_feedback = generateRandomString(); ?>">
                                 Email
                             </label>
                             <input type="email" name="email" id="user-email--<?= $user_email_feedback; ?>"
-                                   class="form-control">
+                                   class="form-control" required>
                         </div>
                         <button class="btn btn-secondary w-100">
                             <?= __('[:ru]Отправить[:uk]Надіслати[:]'); ?>

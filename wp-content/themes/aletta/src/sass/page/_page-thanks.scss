@@ -1,0 +1,19 @@
+#page-thanks {
+  height: 100vh;
+
+  #app-footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+
+  .decor-image {
+    @extend %img;
+    position: absolute;
+    left: 60px;
+    bottom: 60px;
+    width: 170px;
+    height: 80px;
+    z-index: 2;
+  }
+}
