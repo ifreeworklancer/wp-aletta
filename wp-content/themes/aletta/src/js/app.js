@@ -91,6 +91,22 @@ let mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
     }
 
     /**
+     * Intro preview
+     */
+    $('.intro-preview-select-item .pointer').on('click', function () {
+        $('.intro-preview-select-item').removeClass('is-select');
+        $(this).parents('.intro-preview-select-item').addClass('is-select');
+        $('.intro-preview-name').find('.intro-preview-name__item').removeClass('is-select').eq($(this).data('prev-index')).addClass('is-select');
+    });
+
+    $('.intro-preview-name__item').on('click', function () {
+        $('.intro-preview-name__item').removeClass('is-select');
+        $(this).addClass('is-select');
+        $('.intro-preview-select').find('.intro-preview-select-item').removeClass('is-select').eq($(this).data('prev-index')).addClass('is-select');
+    });
+
+
+    /**
      * Products accordion
      */
     $('.products-item').on('click', function () {
@@ -101,7 +117,6 @@ let mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
     /**
      * Tabs
      */
-
     $('.custom-tabs-nav').on('click', 'div:not(.active)', function () {
         $(this)
             .addClass('active').siblings().removeClass('active')
@@ -120,7 +135,7 @@ let mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
         $('.custom-dropdown-input__title').text(creamName);
         $('input[name*="product"]').val(creamName);
         $('.product-selected-item').removeClass('active').eq($(this).index());
-        $('.product-selected-item[data-product-selected-id='+creamID+']').addClass('active');
+        $('.product-selected-item[data-product-selected-id=' + creamID + ']').addClass('active');
     });
 
     $('.custom-dropdown-body ul li').on('click', function () {

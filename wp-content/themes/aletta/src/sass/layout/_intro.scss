@@ -53,4 +53,196 @@
     position: relative;
     z-index: 10;
   }
+
+  .intro-preview {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 40%;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding-bottom: 40px;
+    z-index: 5;
+    display: none;
+
+    @media (min-width: map_get($grid-breakpoints, md)) {
+      display: flex;
+    }
+
+    @media (min-width: map_get($grid-breakpoints, lg)) {
+      width: 50%;
+    }
+
+    &::before {
+      content: '';
+      @extend %pos;
+      background: url('../images/content/intro/decor-item-bg.png') 100% 100% /contain no-repeat;
+      z-index: -2;
+    }
+
+    &-select {
+      display: flex;
+      margin-bottom: 30px;
+
+      .pointer {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background: #fff;
+        border: 1px solid $secondary;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 5;
+
+        &::before,
+        &::after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background: rgba(#fff, .2);
+          border-radius: 50%;
+          width: 0;
+          height: 0;
+          transition: .5s;
+          z-index: -2;
+        }
+
+        .line {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 12px;
+          height: 1px;
+          background: $secondary;
+          transition: .5s;
+
+          &--left {
+            transform: translate(-50%, -50%) rotate(90deg);
+          }
+        }
+
+        &:hover {
+          background: $secondary;
+
+          &::before {
+            width: 50px;
+            height: 50px;
+          }
+
+          &::after {
+            width: 75px;
+            height: 75px;
+          }
+
+          .line {
+            background: $primary;
+          }
+        }
+      }
+
+      &-item {
+        position: relative;
+        width: 33.3333%;
+
+        &:first-of-type {
+          .pointer {
+            left: 30%;
+            bottom: 20%;
+          }
+        }
+
+        &:nth-of-type(2) {
+          .pointer {
+            left: 25%;
+            top: 20%;
+          }
+        }
+
+        &:last-of-type {
+          .pointer {
+            left: 25%;
+            bottom: 40%;
+          }
+        }
+
+
+        &.is-select {
+
+          .intro-preview-select__image {
+            transform: scale(1.2);
+          }
+
+          .pointer {
+            box-shadow: 0 0 130px rgba(0, 0, 0, 0.3);
+            background: $secondary;
+
+            &::before {
+              width: 50px;
+              height: 50px;
+            }
+
+            &::after {
+              width: 75px;
+              height: 75px;
+            }
+
+            .line {
+              background: $primary;
+            }
+          }
+        }
+      }
+
+      &__image {
+        max-width: 100%;
+        transition: .5s;
+      }
+    }
+
+    &-name {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+
+      &__item {
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        color: #666;
+        cursor: pointer;
+        transition: .5s;
+
+        &:after {
+          content: '';
+          width: 0;
+          height: 8px;
+          background: $primary;
+          margin-left: 20px;
+          transition: .5s;
+        }
+
+        &:hover{
+          color: #fff;
+
+          &:after {
+            width: 30px;
+          }
+        }
+
+        &.is-select {
+          color: #fff;
+
+          &:after {
+            width: 80px;
+          }
+        }
+      }
+    }
+  }
 }
