@@ -15,10 +15,12 @@
 
   .logo {
     position: relative;
-    font-size: 30px;
-    font-weight: bold;
-    color: $primary_dark;
     z-index: 210;
+
+    svg {
+      fill: #1D1F26;
+      transition: .4s;
+    }
   }
 
   .header-nav {
@@ -174,6 +176,13 @@
   }
 
   &.white {
+
+    .logo {
+
+      svg {
+        fill: $primary;
+      }
+    }
 
     .header-nav {
 

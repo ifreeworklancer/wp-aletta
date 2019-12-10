@@ -19,7 +19,9 @@
         <div class="row justify-content-between align-items-center">
             <div class="col-auto">
                 <a href="/" class="logo">
-                    ЛОГО
+                    <svg width="165" height="55">
+                        <use xlink:href="#logo-icon"></use>
+                    </svg>
                 </a>
             </div>
             <div class="col-auto">
