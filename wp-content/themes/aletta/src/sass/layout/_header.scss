@@ -18,8 +18,15 @@
     z-index: 210;
 
     svg {
-      fill: #1D1F26;
+      width: 75px;
+      height: 35px;
+      fill: $dark;
       transition: .4s;
+
+      @media (min-width: map_get($grid-breakpoints, sm)) {
+        width: 160px;
+        height: 55px;
+      }
     }
   }
 
@@ -180,7 +187,12 @@
     .logo {
 
       svg {
-        fill: $primary;
+        fill: $dark;
+
+
+        @media (min-width: map_get($grid-breakpoints, xl)) {
+          fill: $primary;
+        }
       }
     }
 
@@ -190,10 +202,16 @@
         ul {
           li {
             a {
-              color: #fff;
+
+              @media (min-width: map_get($grid-breakpoints, xl)) {
+                color: #fff;
+              }
 
               &::before {
-                background: #fff;
+
+                @media (min-width: map_get($grid-breakpoints, xl)) {
+                  background: #fff;
+                }
               }
             }
           }
@@ -201,23 +219,35 @@
       }
 
       .btn {
-        background: #fff;
-        border-color: #fff;
-        color: $secondary;
+
+        @media (min-width: map_get($grid-breakpoints, xl)) {
+          background: #fff;
+          border-color: #fff;
+          color: $secondary;
+        }
 
         &::before {
-          background: #fff;
+
+          @media (min-width: map_get($grid-breakpoints, xl)) {
+            background: #fff;
+          }
         }
 
         &:hover {
-          background: #E7E7E7;
+
+          @media (min-width: map_get($grid-breakpoints, xl)) {
+            background: #E7E7E7;
+          }
         }
       }
 
       .burger-menu {
 
         .line {
-          background: #fff;
+
+          @media (min-width: map_get($grid-breakpoints, xl)) {
+            background: #fff;
+          }
         }
       }
 
@@ -226,25 +256,37 @@
         li {
 
           span, a {
-            color: #fff;
+
+            @media (min-width: map_get($grid-breakpoints, xl)) {
+              color: #fff;
+            }
           }
 
           &.active {
 
             span {
-              color: $secondary;
-              background: #fff;
+
+              @media (min-width: map_get($grid-breakpoints, xl)) {
+                color: $secondary;
+                background: #fff;
+              }
             }
           }
 
           &:hover {
             span {
-              color: $secondary;
+
+              @media (min-width: map_get($grid-breakpoints, xl)) {
+                color: $secondary;
+              }
             }
 
             a {
-              color: $secondary;
-              background: #fff;
+
+              @media (min-width: map_get($grid-breakpoints, xl)) {
+                color: $secondary;
+                background: #fff;
+              }
             }
           }
         }
