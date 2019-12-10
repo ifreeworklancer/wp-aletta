@@ -11,7 +11,7 @@ $sections = [
 ];
 
 foreach ($sections as $section) {
-    include(__DIR__ . '../includes/template-parts/' . $section . '.php');
+    include(__DIR__ . 'includes/template-parts/' . $section . '.php');
 }
 
 get_footer();
