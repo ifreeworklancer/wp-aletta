@@ -112,16 +112,21 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     width: 20px;
-    height: 5px;
+    height: 30px;
     cursor: pointer;
 
     .line {
       width: 20px;
       height: 1px;
+      margin-bottom: 2px;
       background: $secondary;
       transition: .4s;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
     }
 
     &.active {
