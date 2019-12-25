@@ -175,5 +175,5 @@ $product_overview = get_field('product_overview');
     </section>
 
 <?php
-include(__DIR__ . '../includes/template-parts/reviews.php');
+include(__DIR__ . '/includes/template-parts/reviews.php');
 get_footer(); ?>
