@@ -1,5 +1,11 @@
 #page-thanks {
-  height: 100vh;
+  padding: 150px 0 200px;
+  min-height: 100vh;
+
+  @media (min-width: map_get($grid-breakpoints, md)) {
+    padding: 0;
+    height: 100vh;
+  }
 
   #app-footer {
     position: absolute;

@@ -16,7 +16,7 @@ get_header();
                                 <?= __('[:ru]такой страницы не существует[:uk]такої сторінки не існує[:]'); ?>
                             </p>
                         </div>
-                        <a href="/" class="btn btn-primary">
+                        <a href="<?= home_url(); ?>" class="btn btn-primary">
                             <?= __('[:ru]На главную[:uk]На головну[:]'); ?>
                         </a>
                     </div>

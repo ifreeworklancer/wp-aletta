@@ -18,7 +18,7 @@
     <div class="container">
         <div class="row justify-content-between align-items-center">
             <div class="col-auto">
-                <a href="/" class="logo">
+                <a href="<?= home_url(); ?>" class="logo">
                     <svg>
                         <use xlink:href="#logo-icon"></use>
                     </svg>

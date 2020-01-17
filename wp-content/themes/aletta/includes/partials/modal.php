@@ -29,7 +29,7 @@ $products = new WP_Query($args);
                             <img src="<?= get_the_post_thumbnail_url(); ?>" alt="product image" class="image">
                             <div class="name">
                                 <?= get_the_title(); ?>
-                                цена <?= $product_description['product_description_price']; ?>
+                                цена <?= $product_description['product_description_price']; ?> грн
                             </div>
                         </div>
                     <?php endwhile; endif; ?>
@@ -88,6 +88,7 @@ $products = new WP_Query($args);
                         <input type="email" name="email" id="user-email--<?= $user_email_product; ?>"
                                class="form-control" required>
                     </div>
+                    <input type="hidden" name="lang" value="<?= wpm_get_language();?>">
                     <button class="btn btn-secondary w-100">
                         <?= __('[:ru]Отправить[:uk]Надіслати[:]'); ?>
                     </button>
@@ -113,19 +114,22 @@ $products = new WP_Query($args);
                         <label for="user-name--<?= $user_name = generateRandomString(); ?>">
                             <?= __('[:ru]Имя[:uk]Ім\'я[:]'); ?>
                         </label>
-                        <input type="text" name="name_advice" id="user-name--<?= $user_name; ?>" class="form-control" required>
+                        <input type="text" name="name_advice" id="user-name--<?= $user_name; ?>" class="form-control"
+                               required>
                     </div>
                     <div class="form-group">
                         <label for="user-phone--<?= $user_phone = generateRandomString(); ?>">
                             <?= __('[:ru]Номер телефона[:uk]Номер телефону[:]'); ?>
                         </label>
-                        <input type="tel" name="phone_advice" id="user-phone--<?= $user_phone; ?>" class="form-control" required>
+                        <input type="tel" name="phone_advice" id="user-phone--<?= $user_phone; ?>" class="form-control"
+                               required>
                     </div>
                     <div class="form-group">
                         <label for="user-email--<?= $user_email = generateRandomString(); ?>">
                             Email
                         </label>
-                        <input type="email" name="email_advice" id="user-email--<?= $user_email; ?>" class="form-control" required>
+                        <input type="email" name="email_advice" id="user-email--<?= $user_email; ?>"
+                               class="form-control" required>
                     </div>
                     <button class="btn btn-secondary w-100">
                         <?= __('[:ru]Отправить[:uk]Надіслати[:]'); ?>

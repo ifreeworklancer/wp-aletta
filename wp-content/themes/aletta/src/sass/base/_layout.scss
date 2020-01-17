@@ -94,7 +94,7 @@
 
     &-icon {
       @extend %img;
-      flex: 1 0 auto;
+      flex: none;
       width: 35px;
       height: 35px;
       margin-right: 20px;

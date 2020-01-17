@@ -83,67 +83,77 @@ $products = new WP_Query($args);
             </div>
         </div>
     </div>
-    <div class="reviews">
-        <div class="reviews-slider">
-            <?php foreach ($reviews as $item) : ?>
-                <div class="reviews-slider-item">
-                    <div class="reviews-item">
-                        <div class="reviews-item-body">
-                            <div class="video-overview"
-                                 style="background-image: url('<?= getVideoImageLinkAttribute($item['reviews_item']['reviews_item_video']) ?>');"
-                                 data-youtube="<?= getVideoLinkAttribute($item['reviews_item']['reviews_item_video']); ?>">
-                                <svg width="40" height="40">
-                                    <use xlink:href="#play-icon"></use>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="reviews-item-footer">
-                            <div class="name">
-                                <div class="image">
-                                    <figure style="background-image: url('<?= $item['reviews_item']['reviews_item_image']['url']; ?>');"></figure>
-                                </div>
-                                <?= $item['reviews_item']['reviews_item_name']; ?>
-                            </div>
-                            <div class="stars">
-                                <?php
-                                if ($item['reviews_item']['reviews_item_stars'] > 5) {
-                                    $item['reviews_item']['reviews_item_stars'] = 5;
-                                }
-                                if ($item['reviews_item']['reviews_item_stars'] < 1) {
-                                    $item['reviews_item']['reviews_item_stars'] = 1;
-                                }
-                                $counter = 1;
-                                while ($counter <= $item['reviews_item']['reviews_item_stars']) :
-                                    $counter++;
-                                    ?>
-                                    <div class="icon">
-                                        <svg width="15" height="15">
-                                            <use xlink:href="#star-icon"></use>
+    <?php
+    if ($reviews) :?>
+        <div class="reviews">
+            <div class="reviews-slider">
+                <?php
+                foreach ($reviews as $item) :
+                    if ($item['reviews_item']['reviews_item_video'] !== '') :
+                        ?>
+                        <div class="reviews-slider-item">
+                            <div class="reviews-item">
+                                <div class="reviews-item-body">
+                                    <div class="video-overview"
+                                         style="background-image: url('<?= getVideoImageLinkAttribute($item['reviews_item']['reviews_item_video']) ?>');"
+                                         data-youtube="<?= getVideoLinkAttribute($item['reviews_item']['reviews_item_video']); ?>">
+                                        <svg width="40" height="40">
+                                            <use xlink:href="#play-icon"></use>
                                         </svg>
                                     </div>
-                                <?php endwhile; ?>
+                                </div>
+                                <div class="reviews-item-footer">
+                                    <div class="name">
+                                        <div class="image">
+                                            <?php if (!is_null($item['reviews_item']['reviews_item_image']['url'])) : ?>
+                                                <figure style="background-image: url('<?= $item['reviews_item']['reviews_item_image']['url']; ?>');"></figure>
+                                            <?php else: ?>
+                                                <figure style="background-image: url('<?= get_theme_file_uri('images/icon/simple-user.png')?>');"></figure>
+                                            <?php endif; ?>
+                                        </div>
+                                        <?= $item['reviews_item']['reviews_item_name']; ?>
+                                    </div>
+                                    <div class="stars">
+                                        <?php
+                                        if ($item['reviews_item']['reviews_item_stars'] > 5) {
+                                            $item['reviews_item']['reviews_item_stars'] = 5;
+                                        }
+                                        if ($item['reviews_item']['reviews_item_stars'] < 1) {
+                                            $item['reviews_item']['reviews_item_stars'] = 1;
+                                        }
+                                        $counter = 1;
+                                        while ($counter <= $item['reviews_item']['reviews_item_stars']) :
+                                            $counter++;
+                                            ?>
+                                            <div class="icon">
+                                                <svg width="15" height="15">
+                                                    <use xlink:href="#star-icon"></use>
+                                                </svg>
+                                            </div>
+                                        <?php endwhile; ?>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    <?php endif; endforeach; ?>
+            </div>
+            <div class="slider-arrow slider-arrow--reviews">
+                <div class="slider-arrow-item slider-arrow-item--prev">
+                    <svg width="20" height="20">
+                        <use xlink:href="#arrow-prev"></use>
+                    </svg>
                 </div>
-            <?php endforeach; ?>
-        </div>
-        <div class="slider-arrow slider-arrow--reviews">
-            <div class="slider-arrow-item slider-arrow-item--prev">
-                <svg width="20" height="20">
-                    <use xlink:href="#arrow-prev"></use>
-                </svg>
+                <div class="slider-arrow-item slider-arrow-item--next">
+                    <svg width="20" height="20">
+                        <use xlink:href="#arrow-next"></use>
+                    </svg>
+                </div>
             </div>
-            <div class="slider-arrow-item slider-arrow-item--next">
-                <svg width="20" height="20">
-                    <use xlink:href="#arrow-next"></use>
-                </svg>
-            </div>
+            <h2 class="decor-title">
+                <?= get_the_title($pageID); ?>
+            </h2>
         </div>
-        <h2 class="decor-title">
-            <?= get_the_title($pageID); ?>
-        </h2>
-    </div>
+    <?php endif; ?>
     <figure class="decor-image"
             style="background-image: url(<?= get_theme_file_uri('images/icon/decor-image-primary.png'); ?>);"></figure>
 

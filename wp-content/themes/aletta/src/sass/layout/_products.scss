@@ -208,6 +208,11 @@
 
           .title {
             color: #fff;
+            font-size: 1.5rem;
+
+            @media (min-width: map_get($grid-breakpoints, md)) {
+              font-size: $h2-font-size;
+            }
           }
 
           .description {

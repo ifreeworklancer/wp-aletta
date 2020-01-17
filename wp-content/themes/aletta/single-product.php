@@ -33,9 +33,9 @@ $product_overview = get_field('product_overview');
                 </div>
                 <div class="col-sm-8 col-lg-6">
                     <div class="products-description">
-                        <h2 class="title">
+                        <h1 class="title">
                             <?= get_the_title(); ?>
-                        </h2>
+                        </h1>
                         <div class="description">
                             <p>
                                 <?= $product_description['product_description_text']; ?>
