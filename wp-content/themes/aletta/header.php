@@ -76,8 +76,8 @@
     </div>
 </header>
 
-<!-- Modal -->
-<?php require_once('includes/partials/modal.php'); ?>
-
 <!-- Main -->
 <main id="app">
+
+    <!-- Modal -->
+<?php require_once('includes/partials/modal.php'); ?>

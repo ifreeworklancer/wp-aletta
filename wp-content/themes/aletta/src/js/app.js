@@ -127,6 +127,8 @@ let mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
      * Custom dropdown
      * @type {Element}
      */
+    let showBranch = false;
+    $('.searchable--branch .custom-dropdown-input').css('opacity', '0.6');
 
     $('.buy-selected').on('click', function () {
         let creamName = $(this).data('cream');
@@ -138,7 +140,7 @@ let mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
         $('.product-selected-item[data-product-selected-id=' + creamID + ']').addClass('active');
     });
 
-    $('.custom-dropdown-body ul li').on('click', function () {
+    $('.custom-dropdown-body--product ul li').on('click', function () {
         let creamName = $(this).data('cream');
         $('.custom-dropdown-input').addClass('is-selected');
         $('.custom-dropdown-input__title').text(creamName);
@@ -147,9 +149,24 @@ let mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
     });
 
     $('.custom-dropdown-input').on('click', function () {
-        $(this).toggleClass('active');
-        $(this).siblings('.custom-dropdown-body').slideToggle();
+        if ($(this).parents('.searchable--branch').length > 0 && !showBranch) {
+            $('.searchable--branch .custom-dropdown-input').css('opacity', '0.6');
+            $('.searchable--branch input').attr('readonly', true);
+        } else if($(this).parents('.searchable--branch').length > 0 && showBranch) {
+            $('.searchable--branch .custom-dropdown-input').css('opacity', '1');
+            $(this).toggleClass('active');
+            $(this).siblings('.custom-dropdown-body--product').slideToggle();
+            $('.searchable--branch input').attr('readonly', false);
+        } else {
+            $(this).toggleClass('active');
+            $(this).siblings('.custom-dropdown-body--product').slideToggle();
+        }
+        if ($(this).parents('.searchable').length > 0) {
+            $(this).closest(".searchable").find(".custom-dropdown-body").slideToggle();
+            $(this).closest(".searchable").find("ul li").show();
+        }
     });
+
 
     if ($('.custom-dropdown-input')) {
         $(document).on('click', e => {
@@ -160,11 +177,138 @@ let mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
         })
     }
 
+    /**
+     * Custom multiselect
+     */
+    let settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://api.novaposhta.ua/v2.0/json/",
+        "method": "POST",
+        "headers": {
+            "content-type": "application/json",
+        },
+        "processData": false,
+        "data": `{\r\n\"apiKey\": \"14ca0b6e1181e36489653ac69a25f526\",\r\n \"modelName\": \"Address\",\r\n \"calledMethod\": \"getCities\",\r\n \"methodProperties\": {}\r\n}`
+    };
+    let selectItem = '';
+
+
+    let settings2 = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://api.novaposhta.ua/v2.0/json/",
+        "method": "POST",
+        "headers": {
+            "content-type": "application/json",
+        },
+        "processData": false,
+    };
+    let selectItem2 = '';
+
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+        response.data.forEach(item => {
+            selectItem = selectItem + `<li>${item.Description}</li>`;
+        });
+        $('.searchable--city').find('.custom-dropdown-body-list').html(selectItem);
+    });
+
+    $('.searchable__input').on('keyup', function (event) {
+        let container, input, filter, li, input_val;
+        container = $(this).closest(".searchable");
+        input_val = container.find("input").val().toUpperCase();
+
+        if (["ArrowDown", "ArrowUp", "Enter"].indexOf(event.key) != -1) {
+            keyControl(event, container)
+        } else {
+            li = container.find("ul li");
+            li.each(function (i, obj) {
+                if ($(this).text().toUpperCase().indexOf(input_val) > -1) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+
+            if($(this).parents('.searchable--city').length > 0 && $(this).val() === '' || $('.searchable--city ul li').is(':visible')) {
+                showBranch = false;
+                $('.searchable--branch .custom-dropdown-input').css('opacity', '0.6');
+                $('.searchable--branch').find('.custom-dropdown-body-list').html('');
+                $('.searchable--branch input').val('');
+                $('.searchable--branch input').attr('readonly', true);
+            }
+
+            container.find("ul li").removeClass("selected");
+            setTimeout(function () {
+                container.find("ul li:visible").first().addClass("selected");
+            }, 100)
+        }
+    });
+
+    function keyControl(e, container) {
+        if (e.key == "ArrowDown") {
+
+            if (container.find("ul li").hasClass("selected")) {
+                if (container.find("ul li:visible").index(container.find("ul li.selected")) + 1 < container.find("ul li:visible").length) {
+                    container.find("ul li.selected").removeClass("selected").nextAll().not('[style*="display: none"]').first().addClass("selected");
+                }
+
+            } else {
+                container.find("ul li:first-child").addClass("selected");
+            }
+
+        } else if (e.key == "ArrowUp") {
+
+            if (container.find("ul li:visible").index(container.find("ul li.selected")) > 0) {
+                container.find("ul li.selected").removeClass("selected").prevAll().not('[style*="display: none"]').first().addClass("selected");
+            }
+        } else if (e.key == "Enter") {
+            container.find("input").val(container.find("ul li.selected").text()).blur();
+            onSelect(container.find("ul li.selected").text())
+        }
+        container.find("ul li.selected")[0].scrollIntoView({
+            behavior: "smooth",
+        });
+    }
+
+    function onSelect(val) {
+        selectItem2 = '';
+        settings2.data = `{\r\n\"apiKey\": \"14ca0b6e1181e36489653ac69a25f526\",\r\n \"modelName\": \"AddressGeneral\",\r\n \"calledMethod\": \"getWarehouses\",\r\n \"methodProperties\": {\r\n \"CityName\": \"${val}\"\r\n }\r\n}`;
+        $.ajax(settings2).done(function (response) {
+            console.log(response);
+            response.data.forEach(item => {
+                selectItem2 = selectItem2 + `<li>${item.Description}</li>`;
+            });
+            $('.searchable--branch').find('.custom-dropdown-body-list').html(selectItem2);
+        });
+    }
+
+    $(".searchable input").blur(function () {
+        let that = this;
+        setTimeout(function () {
+            $(that).closest(".searchable").find(".custom-dropdown-body").slideUp();
+        }, 300);
+    });
+
+    $(document).on('click', '.searchable ul li', function () {
+        $(this).closest(".searchable").find("input").val($(this).text()).blur();
+        if ($(this).parents(".searchable--city").length > 0) {
+            showBranch = true;
+            $('.searchable--branch .custom-dropdown-input').css('opacity', '1');
+            $('.searchable--branch input').attr('readonly', true);
+            onSelect($(this).text());
+        }
+    });
+
+    $(".searchable ul li").hover(function () {
+        $(this).closest(".searchable").find("ul li.selected").removeClass("selected");
+        $(this).addClass("selected");
+    });
 
     /**
      * Form-label
      */
-
     $('.form-control').on('focus', function () {
         $(this).parents('.form-group').addClass('in-focus');
     });

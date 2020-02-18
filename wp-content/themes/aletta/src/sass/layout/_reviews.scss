@@ -1,5 +1,4 @@
 #reviews {
-  background: $primary_light;
   padding: 50px 0 0;
 
   @media (min-width: map_get($grid-breakpoints, sm)) {
@@ -18,14 +17,23 @@
     margin-bottom: 40px;
   }
 
-  .decor-image {
-    @extend %img;
+  .decor-title {
     position: absolute;
-    right: 20px;
-    bottom: 10%;
-    width: 170px;
-    height: 80px;
+    top: 10%;
+    left: 2%;
+    font-size: 2.125rem;
+    color: $primary;
+    text-transform: uppercase;
     z-index: 2;
+
+    @media (min-width: map_get($grid-breakpoints, sm)) {
+      font-size: 3.75rem;
+    }
+
+    @media (min-width: map_get($grid-breakpoints, lg)) {
+      top: 10%;
+      left: 5%;
+    }
   }
 
   .reviews {
@@ -37,34 +45,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    @media (min-width: map_get($grid-breakpoints, lg)) {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      width: 50%;
-      margin-top: 0;
-      margin-bottom: 0;
-    }
-
-    .decor-title {
-      position: absolute;
-      top: -70px;
-      right: 0;
-      font-size: 2.125rem;
-      color: $primary;
-      text-transform: uppercase;
-      z-index: 2;
-
-      @media (min-width: map_get($grid-breakpoints, sm)) {
-        font-size: 3.75rem;
-      }
-
-      @media (min-width: map_get($grid-breakpoints, lg)) {
-        top: 15%;
-      }
-    }
 
     .slider-arrow {
       width: 85%;
@@ -168,5 +148,40 @@
         }
       }
     }
+  }
+}
+
+#reviews-feedback {
+  padding: 50px 0 0;
+  background: $primary_light;
+
+  @media (min-width: map_get($grid-breakpoints, sm)) {
+    padding: 100px 0 0;
+  }
+
+  @media (min-width: map_get($grid-breakpoints, lg)) {
+    padding: 100px 0;
+  }
+
+  @media (min-width: map_get($grid-breakpoints, xl)) {
+    padding: 0;
+  }
+
+  .form-feedback {
+    margin-bottom: 40px;
+
+    @media (min-width: map_get($grid-breakpoints, xl)) {
+      margin-bottom: 0;
+    }
+  }
+
+  .decor-image {
+    @extend %img;
+    position: absolute;
+    right: 20px;
+    bottom: 10%;
+    width: 170px;
+    height: 80px;
+    z-index: 2;
   }
 }

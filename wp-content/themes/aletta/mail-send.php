@@ -1,12 +1,18 @@
 <?php
-if (isset($_POST['name']) && isset($_POST['phone']) && isset($_POST['email']) && isset($_POST['product'])) {
+if (isset($_POST['name']) && isset($_POST['phone']) && isset($_POST['email']) && isset($_POST['product']) && isset($_POST['city']) && isset($_POST['branch'])) {
     $name = $_POST['name'];
     $phone = $_POST['phone'];
     $email = $_POST['email'];
     $lang = $_POST['lang'];
     $product = $_POST['product'];
+    $city = $_POST['city'];
+    $branch = $_POST['branch'];
     $to = 'aletta.com.ua@gmail.com';
     $subject = 'Форма заявки с сайта Aletta';
+    $user_message = "";
+    if (!empty($_POST['message'])) {
+        $user_message = "<p>Коментарий к заказу: {$_POST['message']}</p>";
+    }
     $message = "
     <html>
         <head>
@@ -18,6 +24,9 @@ if (isset($_POST['name']) && isset($_POST['phone']) && isset($_POST['email']) &&
         <p>Телефон: {$phone}</p>
         <p>Email: {$email}</p>
         <p>Товар: {$product}</p>
+        <p>Город: {$city}</p>
+        <p>Отделение: {$branch}</p>
+        {$user_message}
         </body>
         </html>
     ";

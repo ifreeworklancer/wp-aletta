@@ -51,7 +51,7 @@ $products = new WP_Query($args);
                             </div>
                             <div class="custom-dropdown-input__icon"></div>
                         </div>
-                        <div class="custom-dropdown-body">
+                        <div class="custom-dropdown-body custom-dropdown-body--product">
                             <ul class="custom-dropdown-body-list">
                                 <?php
                                 if ($products->have_posts()) :
@@ -71,7 +71,7 @@ $products = new WP_Query($args);
                         <label for="user-name--<?= $user_name_product = generateRandomString(); ?>">
                             <?= __('[:ru]Имя[:uk]Ім\'я[:]'); ?>
                         </label>
-                        <input type="text" name="name" id="user-name--<?= $user_name_product; ?>" class="form-control"
+                        <input type="text" name="name" value="" id="user-name--<?= $user_name_product; ?>" class="form-control"
                                required>
                     </div>
                     <div class="form-group">
@@ -88,7 +88,33 @@ $products = new WP_Query($args);
                         <input type="email" name="email" id="user-email--<?= $user_email_product; ?>"
                                class="form-control" required>
                     </div>
-                    <input type="hidden" name="lang" value="<?= wpm_get_language();?>">
+                    <div class="searchable searchable--city custom-dropdown">
+                        <div class="custom-dropdown-input">
+                            <input type="text" name="city" required placeholder="<?= __('[:ru]Выберите город[:uk]Виберіть місто[:]'); ?>" class="custom-dropdown-input__title searchable__input">
+                            <div class="custom-dropdown-input__icon"></div>
+                        </div>
+                        <div class="custom-dropdown-body">
+                            <ul class="custom-dropdown-body-list">
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="searchable searchable--branch custom-dropdown">
+                        <div class="custom-dropdown-input">
+                            <input type="text" name="branch" readonly placeholder="<?= __('[:ru]Выберите отделение[:uk]Виберіть відділення[:]'); ?>" class="custom-dropdown-input__title searchable__input" required>
+                            <div class="custom-dropdown-input__icon"></div>
+                        </div>
+                        <div class="custom-dropdown-body">
+                            <ul class="custom-dropdown-body-list">
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder="<?= __('[:ru]Коментарий к заказу[:uk]Коментар до замовлення[:]'); ?>"
+                                  class="form-control"></textarea>
+                    </div>
+                    <input type="hidden" name="lang" value="<?= wpm_get_language(); ?>">
                     <button class="btn btn-secondary w-100">
                         <?= __('[:ru]Отправить[:uk]Надіслати[:]'); ?>
                     </button>

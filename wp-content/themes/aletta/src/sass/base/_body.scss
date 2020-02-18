@@ -59,3 +59,11 @@ input {
   border: none;
   background: transparent;
 }
+
+textarea {
+  resize: none;
+
+  &::placeholder {
+    color: $secondary !important;
+  }
+}
