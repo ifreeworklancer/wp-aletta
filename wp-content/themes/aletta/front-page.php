@@ -5,7 +5,7 @@ get_header();
 
 $sections = [
     'intro',
-    'laboratory',
+//    'laboratory',
     'products',
     'reviews',
 ];

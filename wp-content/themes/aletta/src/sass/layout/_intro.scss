@@ -84,6 +84,7 @@
 
     &-select {
       display: flex;
+      justify-content: space-between;
       margin-bottom: 30px;
 
       .pointer {
@@ -147,7 +148,7 @@
 
       &-item {
         position: relative;
-        width: 33.3333%;
+        width: 30%;
 
         &:first-of-type {
           .pointer {
